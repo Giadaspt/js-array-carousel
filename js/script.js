@@ -24,7 +24,7 @@ let counter = 0;
 
 for (i = 0; i < slideAll.length ; i++) {
 
-  const item1 = document.createElement('div');
+  let item1 = document.createElement('div');
   const item2 = document.createElement('div');
   //console.log(item1);
   //console.log(item2);
@@ -35,39 +35,43 @@ for (i = 0; i < slideAll.length ; i++) {
     item1.classList.add('active');
     item2.classList.add('active');
   } else  {
-    item1.classList.remove('active');
-    item2.classList.remove('active');
+    item1.classList.add('box-slide');
   }
 
+  item1.innerHTML = `<img src="${slideAll[i]}" alt="">`;
+  item2.innerHTML = `<img src="${slideAll[i]}" alt="">`;
   
   sliderBig.append(item1);
   sliderR.append(item2);
   console.log(sliderBig);
   console.log(sliderR);
   
-  item1.innerHTML = `<img src="${slideAll[i]}" alt="">`;
-  item2.innerHTML = `<img src="${slideAll[i]}" alt="">`;
 }
 
 const up_chevron = document.querySelector('.up-chevron');
 const down_chevron = document.querySelector('.down-chevron');
+const item1 = document.createElement('div');
+const item2 = document.createElement('div');
 
 up_chevron.addEventListener('click', function(){
-  slideAll[counter].classList.remove('active');
   counter++;
+  item1.classList.add('active');
   if (counter > 4) {
     counter = 0;
   }
-  slideAll[counter].classList.add('active');
+  item1.classList.add('box-slide');
   console.log(slideAll[counter]);
 });
 
 down_chevron.addEventListener('click', function(){
-  slideAll[counter].classList.remove('active');
   counter--;
+  item1.classList.add('active');
+
   if (counter < 0) {
     counter = slideAll.length -1;
   }
-  slideAll[counter].classList.add('active');
+  item1.classList.add('box-slide');
   console.log(slideAll[counter]);
 });
+
+
