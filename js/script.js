@@ -7,41 +7,14 @@ const right_slide = [
   'img/05.jpg'
 ];
 
-// const box_slide = 
-// [
-//   'img/01.jpg',
-//   'img/02.jpg',
-//   'img/03.jpg',
-//   'img/04.jpg',
-//   'img/05.jpg'
-// ];
-
-const title = [
-  'Svezia',
-  'Svizzera',
-  'Gran Bretagna',
-  'Germania',
-  'Paradise'
-];
-
-const text = [
-  'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
-  'Lorem ipsum',
-  'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
-  'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-  'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
-];
-
-
-//const box_slide = document.getElementsByClassName('blox-slide');
+//const box_slide = document.getElementsByClassName('box-slide');
 //const right_slide = document.getElementsByClassName('right-slide-inner');
 //console.log(box_slide);
 //console.log(right_slide);
-
 let box_slide = [...right_slide];
 console.log(box_slide);
 
-
+let wrappper = document.querySelector('.wrapper');
 
 let counter = 0;
 //console.log(counter);
@@ -54,17 +27,35 @@ const down_chevron = document.querySelector('.down-chevron');
 //console.log(down_chevron);
 
 up_chevron.addEventListener('click', function(){
-  counter ++;
-  if (counter > 5) {
-    counter = right_slide.length = 0;
+  counter++;
+  if (counter > 4) {
+    counter = 0;
   }
   console.log(counter);
 });
 
 down_chevron.addEventListener('click', function(){
-  counter --;
+  counter--;
   if (counter < 0) {
-    counter = right_slide.length = 5;
+    counter = right_slide.length -1;
   }
   console.log(counter);
 });
+
+
+for (i = 0; i < box_slide.length; i++) {
+  console.log(box_slide[i]);
+
+  const element = document.createElement('div');
+  element.className = 'element';
+
+  if (i == counter) {
+    element.classList.add('active');
+  }
+ 
+  element.innerHTML = `
+  <img src=${box_slide[i]}" alt="">
+  `;
+  
+  wrappper.append(element);
+}
